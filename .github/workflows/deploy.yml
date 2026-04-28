@@ -36,9 +36,9 @@ jobs:
           opa eval -i scripts/input.json -d scripts/policy.rego "data"
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -var="app_name=dev-web-app-ci"
         working-directory: templates/appservice-template
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var="app_name=dev-web-app-ci"
         working-directory: templates/appservice-template
